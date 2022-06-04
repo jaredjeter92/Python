@@ -1,0 +1,326 @@
+# ------------------------------------------------ #
+'''first_letter'''
+
+# Write a function called first_letter that takes in a string and returns the first character of that string.
+
+
+### YOUR CODE STARTS HERE ###
+def first_letter(string_1):
+   return string_1[0]
+
+#first_letter("whatever")
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''last_three'''
+
+# Write a function called last_three that takes in a string and returns the last three characters of the string. You can assume the string argument will always be at least three characters long.
+
+
+### YOUR CODE STARTS HERE ###
+def last_three(string_1):
+  return string_1[-3:]
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''char_count'''
+
+# Write a function called char_count that takes in a string of a single character as well as a larger string. char_count will return the amount of times the character is found within the larger string (upper or lowercase).
+
+
+
+### YOUR CODE STARTS HERE ###
+def char_count(x, string_1):
+
+  y = 0
+  for char in string_1.lower():
+    if char == x:
+      y +=1
+  return y 
+
+char_count("w", "world wide web")
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''remove_vowels'''
+
+# Write a function called remove_vowels that takes in a string and returns a string with all the vowels removed.
+
+
+
+### YOUR CODE STARTS HERE ###
+def remove_vowels(string_1):
+  vowels = "aeoui"
+  for char in string_1.lower():
+    if char in vowels:
+      string_1= string_1.replace(char, "")
+  return string_1
+
+remove_vowels("lots of vowels")
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''hello_goodbye'''
+
+# Write a function called hello_goodbye that takes in a string representing a name and an integer. If the integer is 1, return the string "Hello, <NAME>". If the integer is 2, return the string "Goodbye, <NAME>"
+
+
+
+### YOUR CODE STARTS HERE ###
+def hello_goodbye(name, num_1:int):
+  if num_1 == 1:
+    return "Hello, " + name
+  elif num_1 == 2:
+    return "Goodbye, " + name
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''spooky'''
+
+# Write a function called spooky which takes in a string and returns a string, composed of the same characters, in alternating case (beginning with lowercase).
+
+### YOUR CODE STARTS HERE ###
+def spooky(string):
+  #counter string
+  new_string = ""
+  #for loop to get length/number of string
+  for i in range(len(string)):
+    #if index of i odd
+    if not i % 2:      
+      new_string += string[i].lower()
+    else:
+      new_string += string[i].upper()
+
+  #if string[0].upper(): 
+    #string = string[0].lower() + string[1:] 
+    
+  #return string[0].lower() + string[1:]
+  return(new_string)
+#print(spooky("OoogabOOga"))
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''initials'''
+
+# Write a function called initials which takes in a string of a full-name, where each name is separated by a space. Return back a string representing the initials of a string passed to this function.
+
+
+
+### YOUR CODE STARTS HERE ###
+"""
+def initials(full_name):
+  name_initials = ""
+  for char in full_name:
+    if char == " ":
+      i = full_name.find(" ")
+      name_initials = full_name[0] + full_name[i +1]
+  return(name_initials)
+"""
+
+#So, if we do a boolean check, we can do a for loop to see if a true/false is necessary to add the next character after finding a " ". It's a bit tricky as far as the logic goes, so I'll try and put enough comments in to help you understand.abs
+
+def initials(string):
+  #counter variable
+  result = ''
+  #create the true statement     
+  initial = True       
+  #first one will be true, as we want the first name[0]
+  #for loop to enumerate over the string
+  for character in string:
+      #
+      if initial == True:
+        #we then add the first character in that loop, no need for index[0]
+        result = result + character
+        #we then set the initial var to False until we find the first and the subsequent " "
+        initial = False
+      elif character == ' ':
+        #we then search for " ", and when we do, we then set to True, and then keep the loop moving
+        initial = True 
+  return result
+  
+
+#print(initials("Matthew Crum"))
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''mixup'''
+
+# Write a function called mixup which takes in two strings. Return a string that is the concatenation of the two inputted strings (space-separated) except the first characters have been swapped.
+
+
+
+### YOUR CODE STARTS HERE ###
+#def mixup(ren, ren1):
+  #new_ren = ren[:1] + ren1[1:]
+  #new_ren1 = ren1[:1] + ren[1:]
+  #return new_ren + "" + new_ren1
+#def mixup(string_1, string_2):
+  #x = string_1[0]
+  #y = string_2[0]
+  #new_string_1 = string_1.replace(string_1[0], string_2[0])
+  #new_string_2 = string_2.replace(string_2[0], string_1[0])
+  #return new_string_1 + " " + new_string_2
+  
+def mixup(string_1, string_2):
+  new_string_1 = string_2[0] + string_1[1:] 
+  new_string_2 = string_1[0] + string_2[1:]
+  return new_string_1 + " " + new_string_2
+
+#print(mixup("maximum", "altitude"))
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''mixup_extended'''
+
+# When you are done with the mixup function above, go ahead and copy the functionality and name it mixup_extended. This new function will instead take in two strings AND a number. This number represents how many characters you should swap from the beginning of each string. You can assume that the number will always be valid, that is it will be less than the number of characters in the shorter string.
+
+
+
+### YOUR CODE STARTS HERE ###
+def mixup_extended(string_1:str, string_2:str, num:int):
+  new_string_1 = string_2[:num] + string_1[num:] 
+  new_string_2 = string_1[:num] + string_2[num:]
+  return new_string_1 + " " + new_string_2
+
+#print(mixup_extended("maximum", "altitude", 2))
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''not_bad'''
+
+# Write a function called not_bad that takes in a string. Assume this string always has the substrings 'not' and 'bad'. Replace all of the words from the word 'not' until the word 'bad' with 'good'.
+
+
+### YOUR CODE STARTS HERE ###
+def not_bad(string):
+  string_not = string.find('not')
+  string_bad = string.find('bad')
+
+  if string_bad > string_not:
+    string = string.replace(string[string_not:(string_bad+3)], 'good')
+
+  return string
+#print(not_bad("They say you're not that bad at python but you are"))
+  
+#I found this on google and modified it a little. I don't really know why the if statement works... and probably would not have thought of it myself. 
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''h4ck3r_sp33k'''
+
+# Write a function called h4ck3r_sp33k that takes in a string and returns the string in "h4cker sp33k" by replacing characters the following way:
+
+  # 'A','a' => '4'
+  # 'E','e' => '3'
+  # 'L','l' => '1'
+  # 'T','t' => '+'  
+
+### YOUR CODE STARTS HERE ###
+# i = new A
+# k = new E
+# m = new L
+# n = new t
+
+"""
+def h4ck3r_sp33k(string):
+  
+  string_1 = "".joinstring.lower()
+
+  for char in string_1:
+    if char == "a":
+      print(string_1)
+      i = string_1.find("a")
+      print(i)
+      string += string.replace(string[i], "4")
+    #if char == "e":
+      #i = string.find("e")
+      #string += string.replace(string[i], "3")
+    #print(string)
+
+print(h4ck3r_sp33k("HaCKER ATtacker"))
+
+"""
+def h4ck3r_sp33k(string):
+  for char in string.lower():
+    if char =="a":
+      li_1 = list(string)
+      if "a" in li_1:
+        print(li_1)
+"""
+def h4ck3r_sp33k(string):
+  new_string = string.replace("A", "4")
+  new_string_1 = new_string.replace("a", "4")
+  new_string_2 = new_string_1.replace("E", "3")
+  new_string_3 = new_string_2.replace("e", "3")
+  new_string_4 = new_string_3.replace("L", "1")
+  new_string_5 = new_string_4.replace("l", "1")
+  new_string_6 = new_string_5.replace("T", "+")
+  new_string_7 = new_string_6.replace("t", "+")
+  return(new_string_7)     
+#print(h4ck3r_sp33k("Hacker ATtackEr La La Losers"))
+
+# This one is super close but still wrong. Need a way to have it return with out being lowercase locked
+# hah it works but that can't be right it's super ugly
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''same_x_and_o'''
+
+# Write a function called same_x_and_o that takes in a string and returns true if it has the same number of "x" and "o" characters in it.
+
+
+### YOUR CODE STARTS HERE ###
+def same_x_and_o(string):
+  x_counter = 0
+  o_counter = 0
+  for char in string.lower():
+    if char == "x":
+      x_counter += 1
+    elif char == "o":
+      o_counter += 1
+  if x_counter == o_counter:
+    return True
+  else: 
+    return False
+
+
+
+
+
+### YOUR CODE ENDS HERE ###
