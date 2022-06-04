@@ -1,0 +1,311 @@
+# ------------------------------------------------ #
+'''largest_num'''
+
+# Write a function called largest_num which will take in a list of numbers and return the largest number from that list. Do not use any built-in methods to solve this problem.
+
+
+### YOUR CODE STARTS HERE ###
+def largest_num(numbers):
+  max = numbers [0]
+  for x in numbers:
+    if x > max:
+      max = x
+  return max 
+
+
+print(largest_num([12,3,4,16]))
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''includes'''
+
+# Write a function called includes that takes a list of numbers and a number as input. This function returns a boolean indicating whether or not the list contains the number. Do not use the list.index() method.
+
+
+### YOUR CODE STARTS HERE ###
+
+def includes(numbers, num1):
+  result = False
+  for x in numbers:
+    if x == num1:
+      result = True
+  return result
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''average'''
+
+# Write a function called average that takes in a list of numbers and returns a float representing the average value of the those numbers.
+
+
+### YOUR CODE STARTS HERE ###
+
+def average(num):
+    sum_num = 0
+    for t in num:
+        sum_num = sum_num + t           
+
+    avg = sum_num / len(num)
+    return avg
+
+print(average([18,25,3,41,5]))
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''median'''
+
+# Write another function called median that takes in a list of numbers and returns a float representing the median from that list.
+
+
+### YOUR CODE STARTS HERE ###
+def median(list):
+  r = len(list)
+  s = r // 2 
+  if r / 2:
+    return sorted(list)[s]
+  return sum(sorted(list))[s-1:s+1] / 2
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''only_a'''
+
+# Write a function called only_a that takes in a list of strings and returns a list of strings that contain the letter 'a'.
+
+
+### YOUR CODE STARTS HERE ###
+def only_a(list):
+  new_list= []
+  for item in list:
+    if "a" in item:
+      new_list.append(item)
+  return new_list
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''odd_couple'''
+
+# Write a function called odd_couple that takes a list and returns a list.
+
+# odd_couple should:
+
+  # return a list with the first two odd numbers of the input.
+  
+  # return a list with only one odd number if the input is only one odd number.
+  
+  # returns an empty list if the input has no odd numbers
+
+
+### YOUR CODE STARTS HERE ###
+def odd_couple(numbers):
+  if not numbers:
+    return []
+  if numbers[0] % 2 == 1:
+    return[numbers[0]] + odd_couple(numbers[1:])
+  return odd_couple(numbers[1:])
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''overachiever'''
+
+# Write a function called overachiever which takes in a list of lists. The sublists contain both a name (string) of a student followed by a float representing his/her/their average for the class. Return the name of the student with the highest exam score.
+
+
+### YOUR CODE STARTS HERE ###
+def overachiever(students):
+  highest_grade_name = ""
+  lowest_grade_name = ""
+  max_score = -float("inf")
+  min_score = float ("inf")
+  for name, score in students:
+    if score > max_score:
+      max_score = score
+      highest_grade_name = name
+    if score < min_score:
+      min_score = score 
+      lowest_grade_name = name
+  return highest_grade_name
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''absolute_total'''
+
+# Write a function called absolute_total which takes in a list of integers. return the sum of the absolute value of each element.
+
+
+### YOUR CODE STARTS HERE ###
+def absolute_total(num):
+  temp1 = 0
+  for x in (num):
+    temp1 = abs(x) + temp1
+  return (temp1)
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''sum_of_cubes'''
+
+# Write a function called sum_of_cubes which takes in a list of integers. return the sum of the cubes of each element.
+
+
+### YOUR CODE STARTS HERE ###
+def sum_of_cubes(n):
+  
+  total = 0
+  for number in n:
+    total += number**3
+  return total
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''multiply_by_index'''
+
+# Write a function called multiply_by_index which takes in a list of integers. return the sum of the elements multiplied with their list indices.
+
+
+### YOUR CODE STARTS HERE ###
+def multiply_by_index(lst):
+  total = 0
+  if len(lst) >= 1:
+    for i, num in enumerate(lst):
+      x = num * i
+      total += x
+    return total
+  else:
+    return 0
+
+
+#total = 0
+#if len(lst) >= 1:
+    #i = 0
+    #for num in lst:
+      #x = num * i
+      #total += x
+      #i += 1
+  #return total
+#else: 
+    #return 0
+
+
+
+
+### YOUR CODE ENDS HERE ###
+
+
+# ------------------------------------------------ #
+'''move_knight'''
+
+'''Write a function move_knight which takes in a list coords_and_dirs, whose first element is a list, indicating the coordinates of the Knight's starting position, and whose second element is a four-character string, indicating where the Knight should move in one turn.
+
+A Knight must move exactly three spaces, either two spaces in a vertical direction and one in a horizontal direction, or one space in a vertical direction and two spaces in a horizontal direction.
+
+Assume the string at the first index of coords_and_dirs will always be formatted such that:
+
+  The first character is either 'U' or 'D' (where 'U' is up and 'D' is down) and represents the file (vertical direction)
+
+  The second character is either '1' or '2' and represents how many spaces in the vertical direction the Knight will travel
+  
+  The third character is either 'L' or 'R' (where 'L' is left and 'R' is right) and represents the rank (horizontal direction)
+  
+  The fourth character is either '1' or '2' and represents how many spaces in the horizontal direction the Knight will travel
+
+For example: "U1L2" would read as "up one space, left two spaces".
+
+
+
+The chess board is a grid, with each space identified as [file, rank]:
+
+  [0, 7] --> .    .    .    .    .    .    .    . <-- [7, 7]
+
+             .    .    .    .    .    .    .    .
+
+             .    .    .    .    .    .    .    .
+
+             .    .    .    .    .    .    .    .
+
+             .    .    .    .    .    .    .    .
+
+             .    .    .    .    .    .    .    .
+
+             .    .    .    .    .    .    .    . 
+
+  [0, 0] --> .    .    .    .    .    .    .    . <-- [7, 0]
+
+For example: The starting coordinates [7, 7] would represent the knight starting in the upper right corner of the chess board.
+
+
+
+If the given directions would be an illegal move, or if the move would cause the Knight to fall off the board, return the string "Illegal Move - Horsey Down!"
+
+Else, the function should return a string with updated file and rank, formatted as such: "The knight has moved to [file, rank]."
+'''
+
+### YOUR CODE STARTS HERE ###
+#def move_knight(coords_and_dirs):
+def move_knight(coords_and_dirs):
+  coord = coords_and_dirs[0]
+  x_axis = coord[0]
+  y_axis = coord[1]
+  direction = coords_and_dirs[1]
+  x_move = int(direction[3])
+  y_move = int(direction[1])
+  up_down = direction[0]
+  left_right = direction[2]
+  if up_down == 'U':
+    y_axis += y_move
+  elif up_down == "D":
+    y_axis -= y_move
+  #same for y_axis
+  if left_right == "L":
+    x_axis -= x_move
+  elif left_right == "R":
+    x_axis += x_move
+  if x_axis > 7  or x_axis < 0 or y_axis > 7 or y_axis < 0:
+    return "Illegal Move - Horsey Down!"
+  elif x_move == 2 and y_move != 1:
+    return "Illegal Move - Horsey Down!"
+  elif y_move == 2 and x_move != 1:
+    return "Illegal Move - Horsey Down!"
+  elif x_move > 2 or x_move < 1:
+    return "Illegal Move - Horsey Down!"
+  elif y_move > 2 or y_move < 1:
+    return "Illegal Move - Horsey Down!"
+  
+  else:
+    return ("The knight has moved to ["+str(x_axis)+", "+str(y_axis)+"].")
+
+print(move_knight([[1,2],"U1R2"]))
+
+  
+
+### YOUR CODE ENDS HERE ###
